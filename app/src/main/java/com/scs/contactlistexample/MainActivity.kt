@@ -16,8 +16,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.scs.contactlistexample.model.Contact
 import com.scs.contactlistexample.ui.theme.ContactListExampleTheme
 import com.scs.contactlistexample.view.addContact
+import com.scs.contactlistexample.view.showContacts
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +40,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Main() {
-    addContact()
+    val listContacts = remember {
+        listOf(
+            Contact("Sara", 1234),
+            Contact("Susan", 5678)
+        )
+    }
+    //addContact()
+    showContacts(listContacts)
 }
 
 @Preview(showBackground = true)

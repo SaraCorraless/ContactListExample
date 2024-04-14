@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -20,17 +22,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.HorizontalAlignmentLine
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import com.scs.contactlistexample.model.Contact
 
 @Composable
 fun addContact(){
-    var text by remember { mutableStateOf(TextFieldValue("")) }
+    var stateName by remember { mutableStateOf("") }
+    var stateNumber by remember { mutableStateOf("") }
+
+
 
     Column(
         Modifier
-            .fillMaxSize()
-            .background(Color.Blue),
+            .fillMaxSize(),
+            //.background(Color.Blue),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
 
@@ -38,30 +45,34 @@ fun addContact(){
             Modifier
                 .height(70.dp)
                 .width(300.dp)
-                .background(Color.Magenta)
+                //.background(Color.Magenta)
             ) {
 
             OutlinedTextField(
-                value = "test",
-                label = { Text(text = "prueba") },
+                value = stateName,
+                label = { Text(text = "Name") },
                 onValueChange = {
-                    text
-                }
+                    stateName = it
+                },
+                singleLine = true
             )
         }
 
         Row(
             Modifier
                 .height(70.dp)
-                .width(300.dp)
-                .background(Color.Gray)) {
+                .width(300.dp))
+                //.background(Color.Gray))
+                {
 
             OutlinedTextField(
-                value = "test",
-                label = { Text(text = "prueba") },
+                value = stateNumber,
+                label = { Text(text = "Number") },
                 onValueChange = {
-                    text
-                }
+                    stateNumber = it
+                },
+                keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+                singleLine = true
             )
         }
         
