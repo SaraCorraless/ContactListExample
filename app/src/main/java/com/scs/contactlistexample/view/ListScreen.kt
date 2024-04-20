@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,13 +25,21 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.scs.contactlistexample.model.Contact
+import com.scs.contactlistexample.navigation.ItemsMenu
 
 @Composable
-fun showContacts(listContact: List<Contact>): Unit {
+fun showContacts(): Unit {
+
+    val listContacts = remember {
+        listOf(
+            Contact("Sara", 1234),
+            Contact("Susan", 5678)
+        )
+    }
     LazyColumn(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
     ){
-        items (listContact){ contact ->
+        items (listContacts){ contact ->
             cardContact(contact = contact)
         }
     }
