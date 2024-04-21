@@ -32,8 +32,8 @@ fun showContacts(): Unit {
 
     val listContacts = remember {
         listOf(
-            Contact("Sara", 1234),
-            Contact("Susan", 5678)
+            Contact(1, "Sara", 1234),
+            Contact(2, "Susan", 5678)
         )
     }
     LazyColumn(
