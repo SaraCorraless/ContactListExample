@@ -9,11 +9,13 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.scs.contactlistexample.model.ContactApp
 import com.scs.contactlistexample.navigation.NavigationHost
 import com.scs.contactlistexample.ui.theme.ContactListExampleTheme
 
 
 class MainActivity : ComponentActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

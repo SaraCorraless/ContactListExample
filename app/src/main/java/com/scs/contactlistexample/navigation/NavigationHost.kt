@@ -1,6 +1,5 @@
 package com.scs.contactlistexample.navigation
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -10,10 +9,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.layout
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -22,7 +19,7 @@ import com.scs.contactlistexample.view.addContact
 import com.scs.contactlistexample.view.showContacts
 
 @Composable
-fun NavigationHost(){
+fun NavigationHost() {
     val navHostController = rememberNavController()
 
     Scaffold(
