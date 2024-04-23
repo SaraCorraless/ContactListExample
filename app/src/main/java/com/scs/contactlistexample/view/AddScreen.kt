@@ -1,5 +1,6 @@
 package com.scs.contactlistexample.view
 
+import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,26 +13,27 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.currentComposer
-import androidx.compose.runtime.currentCompositionLocalContext
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.scs.contactlistexample.model.Contact
 import com.scs.contactlistexample.model.ContactApp
-import com.scs.contactlistexample.viewmodel.saveConstact
-
-
+import com.scs.contactlistexample.model.saveRoom
+import kotlinx.coroutines.launch
 
 @Composable
 fun addContact(){
     //db
-    val app = currentCompositionLocalContext as ContactApp
+    //val app = LocalContext.current as ContactApp
+    val context = LocalContext.current
 
     var stateName by remember { mutableStateOf("") }
     var stateNumber by remember { mutableStateOf("") }
@@ -41,16 +43,16 @@ fun addContact(){
     Column(
         Modifier
             .fillMaxSize(),
-            //.background(Color.Blue),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center) {
+        //.background(Color.Blue),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center) {
 
         Row(
             Modifier
                 .height(70.dp)
                 .width(300.dp)
-                //.background(Color.Magenta)
-            ) {
+            //.background(Color.Magenta)
+        ) {
 
             OutlinedTextField(
                 value = stateName,
@@ -66,8 +68,8 @@ fun addContact(){
             Modifier
                 .height(70.dp)
                 .width(300.dp))
-                //.background(Color.Gray))
-                {
+        //.background(Color.Gray))
+        {
 
             OutlinedTextField(
                 value = stateNumber,
@@ -79,11 +81,9 @@ fun addContact(){
                 singleLine = true
             )
         }
-        
+
         Button(
-            onClick = {
-                lifecycleScope.launchllp
-                app.room.ContactDao().insert(Contact(0, "test", 3456))
+            onClick = {Toast.makeText(context, "Name: "+stateName+ "  Number: "+ stateNumber, Toast.LENGTH_LONG).show()
 
             }
         ) {
@@ -93,3 +93,4 @@ fun addContact(){
     }
 
 }
+

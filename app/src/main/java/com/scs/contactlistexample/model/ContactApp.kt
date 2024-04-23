@@ -6,6 +6,7 @@ import androidx.room.Room
 class ContactApp: Application(){
 
     val room = Room.databaseBuilder(this, ContactDb::class.java, "contact").build()
+    val dao = room.ContactDao()
 }
 
 

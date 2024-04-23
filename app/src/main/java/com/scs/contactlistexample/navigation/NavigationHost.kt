@@ -18,6 +18,9 @@ import androidx.navigation.compose.rememberNavController
 import com.scs.contactlistexample.view.addContact
 import com.scs.contactlistexample.view.showContacts
 
+
+
+
 @Composable
 fun NavigationHost() {
     val navHostController = rememberNavController()
@@ -32,19 +35,19 @@ fun NavigationHost() {
                     NavigationBarItem(
                         selected = currentDestination?.hierarchy?.any{ it.route == navItem.route} == true,
                         onClick = {
-                                  navHostController.navigate(navItem.route){
-                                      popUpTo(navHostController.graph.findStartDestination().id){
-                                          saveState = true
-                                      }
-                                      launchSingleTop = true
-                                      restoreState = true
-                                  }
+                            navHostController.navigate(navItem.route){
+                                popUpTo(navHostController.graph.findStartDestination().id){
+                                    saveState = true
+                                }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
                         },
-                        icon = { 
-                               Icon(
-                                   imageVector = navItem.icon,
-                                   contentDescription = null
-                               )
+                        icon = {
+                            Icon(
+                                imageVector = navItem.icon,
+                                contentDescription = null
+                            )
                         },
                         label = {
                             Text(text = navItem.title)
@@ -55,11 +58,12 @@ fun NavigationHost() {
         }
     ){paddingValues ->
         NavHost(navController = navHostController,
-            startDestination = Screens.AddContact.name,
+            startDestination = Screens.ListConstact.name,
             Modifier.padding(paddingValues)
         ) {
             composable(Screens.AddContact.name){
-                 addContact()
+                addContact()
+
             }
             composable(Screens.ListConstact.name){
                 showContacts()
